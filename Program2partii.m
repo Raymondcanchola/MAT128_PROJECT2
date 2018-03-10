@@ -1,26 +1,32 @@
-function Average_digit = average_digit()
+%Raymond Canchola
+%
+%Program ii
 load mnist_all.mat
-m = 10;
-n = 784;
-A = zeros(m,n);
+who;
 
-A(1,:) = mean(train0);
-A(2,:) = mean(train1);
-A(3,:) = mean(train2);
-A(4,:) = mean(train3);
-A(5,:) = mean(train4);
-A(6,:)= mean(train5);
-A(7,:) = mean(train6);
-A(8,:) = mean(train7);
-A(9,:) = mean(train8);
-A(10,:) = mean(train9);
+%Creating array for loop
+n = 10;
+M = cell(n,1);
+M{1,1} = train0; M{2,1} = train1; M{3,1} = train2; M{4,1} = train3; M{5,1} = train4;
+M{6,1} = train5; M{7,1} = train6; M{8,1} = train7; M{9,1} = train8; M{10,1} = train9;
 
-for i = 1:10
-    figure;
-    digit = A(i,:);
-    digitImage = reshape(digit, 28,28);
-    image(rot90(flipud(digitImage),-1)),
-    colormap(gray(256)), axis square tight off;
+%Using for loop to create Matrix that consists with Means of rows
+for i = 1:n
+    Matrix(i,:)=mean(M{i,1});
 end
 
+%Checking m and n of Matrix for next step
+[m n]=size(Matrix);
+
+%Using for loop to plot figure of Matrix that conists of all Means 
+figure                                         
+colormap(gray)                                 
+for i = 1:m                                    
+    
+    subplot(2,5,i)                             
+    digit = rot90(flipud((reshape(Matrix(i, :), [28,28]))),-1);
+    imagesc(digit)                              
+    axis square tight off
+    
+end
     
