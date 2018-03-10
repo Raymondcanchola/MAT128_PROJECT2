@@ -22,11 +22,9 @@ end
 figure                                         
 colormap(gray)                                 
 for i = 1:m                                    
-    
     subplot(2,5,i)                             
     digit = rot90(flipud((reshape(Matrix(i, :), [28,28]))),-1);
     imagesc(digit)                              
     axis square tight off
-    
 end
     
