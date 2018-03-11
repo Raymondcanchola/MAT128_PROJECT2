@@ -61,6 +61,7 @@ n = 10;
 
 O = Matrix;
 W = rand(10,1,784);
+net=0;
 
 figure
   for i = 1:n
