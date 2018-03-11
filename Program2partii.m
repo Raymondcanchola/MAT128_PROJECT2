@@ -1,4 +1,4 @@
-%Raymond Canchola
+%Raymond and Leigh
 %
 %Program ii
 load mnist_all.mat
@@ -29,18 +29,54 @@ for i = 1:m
 end
     
 %%
-% Part iii
-n = 10; 
-W = randi(10,10,784); 
-%W = size(n);
-net = 0; 
-O = Matrix; 
+ % Part iii
+ n = 10; 
+ W = randi(10,10,784); 
+ 
+ net = 0; 
+ O = Matrix; 
 
-for i = 1:n
-    net = net + O(i,:)*W(i,:)'
-    % Question: Is it element multiplication or row multiplication? Or is
-    % that the same thing? 
-end
-
-%function 1, bounded by 0 and 1
-out = 1 / (1+exp(-net)); 
+ figure
+ for i = 1:n
+     
+     net = net + O(i,:)*W(i,:)';
+     
+     %Activation function
+     out = 1 / (1+exp(-net));
+     %derative_Act_function
+     d_out = out*(1-out);
+     
+     %plot for graph
+     plot(net,out,'o')
+     title('Graph of large and small weights: o rep. Large, x rep. Small')
+     xlabel('net') %x-axis label
+     ylabel('output') %y-axis label
+     hold on
+     grid on
+     
+ end
+ 
+ W = randi(1,10,784);
+ 
+  for i = 1:n
+     
+     net = net + O(i,:)*W(i,:)';
+     
+     %Activation function
+     out = 1 / (1+exp(-net));
+     %derative_function
+     d_out = out*(1-out);
+     
+     %plot for graph
+     plot(net,out,'x')
+     hold on
+     grid on
+     
+ end
+ 
+ %Other Functions:  Other functions we can use is
+ %                  F(net) = (tanh(net) + 1)/2
+ %                  and the relu activation function:
+ %                  F(net) = max(0,net). Different
+ %                  activation functions increase and
+ %                  decrease test accuracy.
