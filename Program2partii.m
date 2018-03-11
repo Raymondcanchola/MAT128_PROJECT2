@@ -28,3 +28,19 @@ for i = 1:m
     axis square tight off
 end
     
+%%
+% Part iii
+n = 10; 
+W = randi(10,10,784); 
+%W = size(n);
+net = 0; 
+O = Matrix; 
+
+for i = 1:n
+    net = net + O(i,:)*W(i,:)'
+    % Question: Is it element multiplication or row multiplication? Or is
+    % that the same thing? 
+end
+
+%function 1, bounded by 0 and 1
+out = 1 / (1+exp(-net)); 
