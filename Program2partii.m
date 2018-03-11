@@ -30,13 +30,15 @@ end
     
 %%
  % Part iii
- n = 10; 
- W = randi(10,10,784); 
- 
- net = 0; 
- O = Matrix; 
+n = 10;
 
- figure
+
+W = randi([1000 5000],10,784);
+W;
+net = 0; 
+O = Matrix; 
+
+figure
  for i = 1:n
      
      net = net + O(i,:)*W(i,:)';
@@ -48,16 +50,19 @@ end
      
      %plot for graph
      plot(net,out,'o')
-     title('Graph of large and small weights: o rep. Large, x rep. Small')
+     title('Graph of Large Weights')
      xlabel('net') %x-axis label
      ylabel('output') %y-axis label
      hold on
      grid on
      
  end
- 
- W = randi(1,10,784);
- 
+n = 10;
+
+O = Matrix;
+W = rand(10,1,784);
+
+figure
   for i = 1:n
      
      net = net + O(i,:)*W(i,:)';
@@ -69,12 +74,15 @@ end
      
      %plot for graph
      plot(net,out,'x')
+     title('Graph of Small Weights')
+     xlabel('net') %x-axis label
+     ylabel('output') %y-axis label
      hold on
      grid on
      
  end
- 
- %Other Functions:  Other functions we can use is
+
+ %Other Functions:  Another function we can use is
  %                  F(net) = (tanh(net) + 1)/2
  %                  and the relu activation function:
  %                  F(net) = max(0,net). Different
