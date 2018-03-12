@@ -27,8 +27,7 @@ for i = 1:m
     imagesc(digit)                              
     axis square tight off
 end
-    
-%%
+    %%
  % Part iii
 n = 10;
 
@@ -41,15 +40,15 @@ O = Matrix;
 figure
  for i = 1:n
      
-     net = net + O(i,:)*W(i,:)';
+     net = net+O(i,:).*W(i,:)';
      
      %Activation function
-     out = 1 / (1+exp(-net));
+     output = 1./ (1+exp(-net));
      %derative_Act_function
-     d_out = out*(1-out);
+     d_output = output.*(1-output);
      
      %plot for graph
-     plot(net,out,'o')
+     plot(net,output,'o')
      title('Graph of Large Weights')
      xlabel('net') %x-axis label
      ylabel('output') %y-axis label
@@ -57,24 +56,25 @@ figure
      grid on
      
  end
+ 
 n = 10;
-
 O = Matrix;
 W = rand(10,1,784);
 net=0;
-
+output=0;
 figure
-  for i = 1:n
+ 
+for i = 1:n
      
-     net = net + O(i,:)*W(i,:)';
+     net = net + O(i,:).*W(i,:)';
      
      %Activation function
-     out = 1 / (1+exp(-net));
+     output = 1./ (1+exp(-net));
      %derative_function
-     d_out = out*(1-out);
+     d_output = output.*(1-output);
      
      %plot for graph
-     plot(net,out,'x')
+     plot(net,output,'x')
      title('Graph of Small Weights')
      xlabel('net') %x-axis label
      ylabel('output') %y-axis label
@@ -89,3 +89,5 @@ figure
  %                  F(net) = max(0,net). Different
  %                  activation functions increase and
  %                  decrease test accuracy.
+
+
